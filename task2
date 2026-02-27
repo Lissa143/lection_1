@@ -1,0 +1,25 @@
+public class task2 {
+    public static void main(String[] args) {
+        System.out.println("Числа, удовлетворяющие условиям:");
+        
+        //трехзначные числа, оканчивающиеся на 0
+        for (int number = 100; number <= 990; number += 10) {
+            
+            int sumOddDivisors = 0;
+            
+            // делители числа
+            for (int i = 1; i <= number; i++) {
+                if (number % i == 0) { 
+                    if (i % 2 != 0) {   
+                        sumOddDivisors += i;
+                    }
+                }
+            }
+            
+            // оканчивается сумма на 0
+            if (sumOddDivisors % 10 == 0) {
+                System.out.println(number);
+            }
+        }
+    }
+}
