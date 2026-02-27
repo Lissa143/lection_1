@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class tsak1 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Введите трехзначное число: ");
+        int number = scanner.nextInt();
+        
+        // Получаем цифры числа
+        int hundreds = number / 100;        // сотни
+        int tens = (number / 10) % 10;      // десятки
+        int units = number % 10;             // единицы
+        
+        int result;
+        
+        // Проверяем условие и выполняем перестановку
+        if (number > 500) {
+            // Меняем местами сотни и единицы
+            result = units * 100 + tens * 10 + hundreds;
+        } else {
+            // Меняем местами десятки и единицы
+            result = hundreds * 100 + units * 10 + tens;
+        }
+        
+        System.out.println("Результат: " + result);
+        
+        scanner.close();
+    }
+}
