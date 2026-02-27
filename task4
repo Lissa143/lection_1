@@ -1,0 +1,64 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class task4 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        //1 массив
+        System.out.print("Размер 1: ");
+        int[] a = new int[sc.nextInt()];
+        System.out.println("Элементы 1:");
+        for (int i = 0; i < a.length; i++) a[i] = sc.nextInt();
+        
+        //2 массив
+        System.out.print("Размер 2: ");
+        int[] b = new int[sc.nextInt()];
+        System.out.println("Элементы 2:");
+        for (int i = 0; i < b.length; i++) b[i] = sc.nextInt();
+        
+        // результаты
+        ArrayList<Integer> onlyA = new ArrayList<>();
+        ArrayList<Integer> onlyB = new ArrayList<>();
+        
+        // элементы только в 1 массиве
+        for (int x : a) {
+            boolean ok = true;
+            for (int y : b) {
+                if (x == y) { ok = false; break; }
+            }
+            if (ok && !onlyA.contains(x)) onlyA.add(x);
+        }
+        
+        //элементы только во 2 массиве
+        for (int x : b) {
+            boolean ok = true;
+            for (int y : a) {
+                if (x == y) { ok = false; break; }
+            }
+            if (ok && !onlyB.contains(x)) onlyB.add(x);
+        }
+        
+        //двумерный массив
+        int[][] result = new int[2][];
+        
+        result[0] = new int[onlyA.size()];
+        for (int i = 0; i < onlyA.size(); i++) result[0][i] = onlyA.get(i);
+        
+        result[1] = new int[onlyB.size()];
+        for (int i = 0; i < onlyB.size(); i++) result[1][i] = onlyB.get(i);
+        
+        System.out.println("\nРЕЗУЛЬТАТ:");
+        System.out.print("Только в 1-м: [");
+        for (int i = 0; i < result[0].length; i++) {
+            System.out.print(result[0][i] + (i < result[0].length-1 ? ", " : ""));
+        }
+        System.out.println("]");
+        
+        System.out.print("Только во 2-м: [");
+        for (int i = 0; i < result[1].length; i++) {
+            System.out.print(result[1][i] + (i < result[1].length-1 ? ", " : ""));
+        }
+        System.out.println("]");
+    }
+}
