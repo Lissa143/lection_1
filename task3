@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class task3 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        final int MAX_PEOPLE = 6;
+        final int MAX_WEIGHT = 450;
+        
+        int count = 0;
+        int totalWeight = 0;
+        String reason = "";
+        
+        System.out.println("Введите вес людей:");
+        
+        while (count < MAX_PEOPLE && totalWeight < MAX_WEIGHT) {
+            System.out.print("Вес " + (count + 1) + "-го человека: ");
+            int weight = scanner.nextInt();
+
+            if (totalWeight + weight > MAX_WEIGHT) {
+                reason = "Превышен лимит по весу (максимум 450 кг)";
+                break;
+            }
+            
+            count++;
+            totalWeight += weight;
+        }
+        
+        if (reason.isEmpty()) {
+            if (count >= MAX_PEOPLE) {
+                reason = "Достигнуто максимальное количество человек (6)";
+            } else if (totalWeight >= MAX_WEIGHT) {
+                reason = "Достигнут максимальный вес (450 кг)";
+            }
+        }
+        
+        System.out.println("\n РЕЗУЛЬТАТ:");
+        System.out.println("Количество людей: " + count);
+        System.out.println("Общий вес: " + totalWeight + " кг");
+        System.out.println("Причина остановки: " + reason);
+        
+        scanner.close();
+    }
+}
